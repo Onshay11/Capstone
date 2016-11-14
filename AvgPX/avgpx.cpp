@@ -2,8 +2,27 @@
 #include <iostream>
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
+#include <string>
 using namespace cv;
 using namespace std;
+using std::string;
+
+string getFileName(const string& s) {
+    
+    char sep = '/';
+    
+#ifdef _WIN32
+    sep = '\\';
+#endif
+    
+    size_t i = s.rfind(sep, s.length());
+    if (i != string::npos) {
+        return(s.substr(i+1, s.length() - i));
+    }
+    
+    return("");
+}
+
 
 int bright( Mat img,String old)
 {
@@ -19,15 +38,8 @@ int bright( Mat img,String old)
     Mat imgL = img + Scalar(-75, -75, -75); //decrease the brightness by 75 units
     //img.convertTo(imgL, -1, 1, -75);
     
-    namedWindow("Original Image", CV_WINDOW_AUTOSIZE);
-    namedWindow("High Brightness", CV_WINDOW_AUTOSIZE);
-    
-    imshow("Original Image", img);
-    imshow("High Brightness", imgH);
     imwrite("Good_Photos/" + old,imgH);
     imwrite("Bad_Photos/" + old,img);
-    
-    waitKey(0);
     
     destroyAllWindows(); //destroy all open windows
     
@@ -36,12 +48,11 @@ int bright( Mat img,String old)
 
 int main(int argc, const char** argv)
 {
-    String pic [4] = {"test1.jpg","test2.jpg","test3.jpg","test4.jpg"};
-    for(int i = 0; i<4;i++){
+    Mat img = imread( argv[1], CV_LOAD_IMAGE_COLOR);
+    String name = argv[1];
+    name = getFileName(name);
     // Create a black image with a gray rectangle on top left
-    Mat img = imread( pic[i], CV_LOAD_IMAGE_COLOR);
     rectangle(img, Rect(0, 0, 100, 100), Scalar(100), CV_FILLED);
-
     // Define a polygon
     Point pts[1][4];
     pts[0][0] = Point(20, 20);
@@ -59,15 +70,12 @@ int main(int argc, const char** argv)
     // Compute the mean with the computed mask
     Scalar average = mean(img, mask);
     int d = (average[0] + average[1] + average[2])/3;
-        img = imread( pic[i], CV_LOAD_IMAGE_COLOR);
+        img = imread( argv[1], CV_LOAD_IMAGE_COLOR);
         if(d < 95){
-            bright(img,pic[i]);
+            bright(img,name);
         } else {
-            imwrite("Good_Photos/" + pic[i],img);
+            imwrite("Good_Photos/" + name,img);
         }
-    std::cout << d << std::endl;
-    }
-
     return 0;
 }
 
