@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( avgpx )
+find_package( OpenCV )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( avgpx avgpx.cpp )
+target_link_libraries( avgpx ${OpenCV_LIBS} )

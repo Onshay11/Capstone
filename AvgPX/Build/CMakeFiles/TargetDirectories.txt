@@ -1,0 +1,3 @@
+/Users/Sean/Desktop/Capstone/AvgPX/Build/CMakeFiles/edit_cache.dir
+/Users/Sean/Desktop/Capstone/AvgPX/Build/CMakeFiles/rebuild_cache.dir
+/Users/Sean/Desktop/Capstone/AvgPX/Build/CMakeFiles/avgpx.dir

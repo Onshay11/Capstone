@@ -1,0 +1,14 @@
+# Package Information for pkg-config
+
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir_old=${prefix}/include/opencv
+includedir_new=${prefix}/include
+
+Name: OpenCV
+Description: Open Source Computer Vision Library
+Version: 3.1.0
+Libs: -L${exec_prefix}/lib -lopencv_shape -lopencv_stitching -lopencv_objdetect -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_video -lopencv_photo -lopencv_ml -lopencv_imgproc -lopencv_flann -lopencv_viz -lopencv_core
+Libs.private: -L${exec_prefix}/share/OpenCV/3rdparty/lib -llibjpeg -llibwebp -llibpng -llibtiff -llibjasper -lIlmImf -lzlib -lippicv -framework OpenCL -framework Accelerate -framework AVFoundation -framework CoreGraphics -framework CoreImage -framework CoreMedia -framework CoreVideo -framework QuartzCore -L/usr/local/Cellar/vtk/7.0.0/lib -lvtkRenderingOpenGL2-7 -lvtkCommonExecutionModel-7 -lvtkCommonDataModel-7 -lvtkCommonMath-7 -lvtkCommonCore-7 -lvtksys-7 -lvtkCommonMisc-7 -lvtkCommonSystem-7 -lvtkCommonTransforms-7 -lvtkImagingHybrid-7 -lvtkIOImage-7 -lvtkDICOMParser-7 -lvtkIOCore-7 -L/usr/lib -lz -lvtkmetaio-7 -L/usr/local/lib -ljpeg -lpng -ltiff -lvtkImagingCore-7 -lvtkRenderingCore-7 -lvtkCommonColor-7 -lvtkFiltersExtraction-7 -lvtkFiltersCore-7 -lvtkFiltersGeneral-7 -lvtkCommonComputationalGeometry-7 -lvtkFiltersStatistics-7 -lvtkImagingFourier-7 -lvtkalglib-7 -lvtkFiltersGeometry-7 -lvtkFiltersSources-7 -lvtkglew-7 -lvtkInteractionStyle-7 -lvtkRenderingLOD-7 -lvtkFiltersModeling-7 -lvtkIOPLY-7 -lvtkIOGeometry-7 -lvtkFiltersTexture-7 -lvtkRenderingFreeType-7 -lvtkfreetype-7 -lvtkIOExport-7 -lvtkRenderingAnnotation-7 -lvtkImagingColor-7 -lvtkRenderingContext2D-7 -lvtkRenderingLabel-7 -framework Cocoa -lstdc++
+Cflags: -I${includedir_old} -I${includedir_new}
